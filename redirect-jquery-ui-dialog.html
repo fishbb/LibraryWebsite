@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Redirect with jQuery UI Dialog - Modal confirmation</title>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+    function Redirect()
+    {
+    window.location="http://fishbb.pythonanywhere.com";
+    };
+  $( function() {
+    $( "#dialog-confirm" ).dialog({
+      dialogClass: "no-close",    
+      resizable: false,
+      height: "auto",
+      width: 400,
+      modal: true,
+      buttons: {
+        "OK": function() {
+          Redirect();
+        },
+      }
+    });
+  } );
+  </script>
+  <style>
+  .no-close .ui-dialog-titlebar-close {
+  display: none;
+    }
+  </style>
+</head>
+<body>
+ 
+<div id="dialog-confirm" title="New Library Catalog">
+  <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>The library is launching a new library catalog. Click "OK" and you will be redirected to the new catalog website.</p>
+</div>
+ 
+<p>some other random testing stuff here.</p>
+ 
+</body>
+</html>
