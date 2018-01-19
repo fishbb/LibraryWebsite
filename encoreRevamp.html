@@ -1,0 +1,91 @@
+<style>
+#bannertop, #contentColumn, #homepageFooterArea{
+    display:none; !important
+}
+
+#myCount {
+    color: red;
+}
+
+.browseHeader {
+    margin-top: 10px;
+}
+</style>
+
+<script>
+var myNumber = 7;
+var foo;
+
+function Redirect()
+{
+window.location="http://fishbb.pythonanywhere.com";
+};
+
+function updateSecs() {
+    document.getElementById('myCount').innerHTML = myNumber;
+    myNumber--;
+    if (myNumber === 0 ) {
+        clearInterval(foo);
+        Redirect();
+    }
+};
+
+function countdownTimer() {
+    foo = setInterval(function(){
+        updateSecs()
+    }, 1000);
+};
+
+
+countdownTimer();
+</script>
+
+<div style="display: block;height:150px;">
+<div class="encoreLogo">
+<a href="http://fishbb.pythonanywhere.com"><img src="http://fishbb.pythonanywhere.com/static/media/uploads/circle.png" alt="DLOU website" width=80px></a>
+</div>
+</div>
+
+<div class="homepageQueryContainer">
+
+<div class="homepageQuery">
+
+<p class="browseHeader">The library is launching a new library catalog. <p>
+<p class="browseHeader">Update your bookmark to <a href="http://fishbb.pythonanywhere.com">fishbb.pythonanywhere.com</a>. </p>
+<p class="browseHeader">
+You will be automatically redirected to the new catalog in <span id="myCount">7</span> seconds.</p>
+
+<div id="searchbox" name="searchbox">
+<form action="https://any-sandbox-cms.demo.bibliocommons.com/v2/search" method="get"><input name="searchType" type="hidden" value="smart">
+            <span class="searchText customHeader">
+                
+                
+                    <label for="searchString">Search:</label>
+                
+            </span>
+			<span class="searchContent">
+				<div class="searchInput">					 
+					
+						<input type="text" name="query" value="" id="query" onfocus="return;" size="40" tabindex="0">
+					
+				</div>
+				
+				<div id="advancedSearchLinkAnyComponent">
+				    
+                        <div class="advSearch">
+                            <a id="advancedSearchLinkComponent" href="https://any-sandbox-cms.demo.bibliocommons.com/search" >
+                                Advanced Search
+                            </a>
+                        </div>
+                    
+                </div>
+			</span>
+			<span class="searchSubmit">
+				<input type="submit" src="http://cpalo-mt.iii.com/iii/encore/resources/gold/images/go_button.png" id="searchImageSumbitComponent" tabindex="0" alt="Search" width="40" height="40" />
+
+			</span>
+		</form>
+         
+	</div>
+
+</div>
