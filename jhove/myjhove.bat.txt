@@ -2,16 +2,11 @@
 rem Batch command file developed by Dan Lou (http://fishbb.github.io).
 rem The file will look into a directory and its sub-directories, find all .tif images, and run against jhove TIFF validation.
 rem Output will be saved to an output file.
+rem Replace "D:\" with your directory; Replace "output.txt" with your desired place to store output.
 rem Run this file from command line inside the jhove directory, usually jhove is installed at C:\Users\Your Username\jhove.
 rem For example: C:\Users\dlou\jhove>myjhove
 
-rem set the root directory for all tiff images you want to validate, change the parameter here to your directory.
-set myjhove_root = "D:\"
-
-rem set the output/log file, change the parameter here to your desired location.
-set myjhove_output = "output.txt"
-
-for /r myjhove_root %%i in (*.tif) do (
+for /r D:\ %%i in (*.tif) do (
 echo %%i 
-jhove -m TIFF-hul %%i >> myjhove_output
+jhove -m TIFF-hul %%i >> output.txt
 )
