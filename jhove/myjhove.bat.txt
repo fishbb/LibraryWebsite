@@ -8,5 +8,5 @@ rem For example: C:\Users\dlou\jhove>myjhove
 
 for /r D:\ %%i in (*.tif) do (
 echo %%i 
-jhove -m TIFF-hul %%i >> output.txt
+jhove -m TIFF-hul "%%i" >> output.txt
 )
