@@ -8,11 +8,31 @@
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script>
+
     function Redirect()
     {
     window.location="http://fishbb.pythonanywhere.com";
     };
+    
+    window.onload = function(){
+  
+    (function(){    
+     var counter = 5;
+     var interval = setInterval(function() {
+        counter--;
+        document.getElementById('myCount').innerHTML = counter;
+        if (counter == 0) {
+            clearInterval(interval);
+            Redirect();
+        }
+     },1000);
+ 
+     })();
+  
+    }
+
   $( function() {
+  
     $( "#dialog-confirm" ).dialog({
       dialogClass: "no-close",    
       resizable: false,
@@ -20,12 +40,13 @@
       width: 400,
       modal: true,
       buttons: {
-        "OK": function() {
+        "Redirect to New Catalog": function() {
           Redirect();
         },
       }
     });
   } );
+
   </script>
   <style>
   .no-close .ui-dialog-titlebar-close {
@@ -36,10 +57,11 @@
 <body>
  
 <div id="dialog-confirm" title="New Library Catalog">
-  <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>The library is launching a <a href="http://fishbb.pythonanywhere.com">new library catalog</a>. Click <b>OK</b> and you will be redirected to the <a href="http://fishbb.pythonanywhere.com">new catalog website</a>.</p>
+
+  <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>
+  The library is launching a <a href="http://fishbb.pythonanywhere.com">new library catalog</a>. 
+  You will be redirected to the new catalog in <span id="myCount">5</span> seconds. </p>
 </div>
- 
-<p>some other random testing stuff here.</p>
  
 </body>
 </html>
