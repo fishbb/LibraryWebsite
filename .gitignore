@@ -35,3 +35,9 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# real logs and files generated from script#
+############################################
+errors_validation*
+validation*
+

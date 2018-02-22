@@ -62,7 +62,8 @@ def list_to_csv(list, file_name):
 
 def jhove_to_csv(input_file, output_file, columns, start_column=None):
     """
-    convert jhove TIFF output file to a csv file
+    convert jhove TIFF output file to a csv file. First line of the file give total number of files validated and how many errors found.
+    for errors, it also generates a separate file named "errors_"+output_file
     parameters:
     input_file: string, full path to jhove TIFF output file
     output_file: string, full path of the csv file
@@ -98,10 +99,23 @@ def jhove_to_csv(input_file, output_file, columns, start_column=None):
                     record[i] = ''.join(l.split(c+":")[1:])
             record[-1] += '\t'+l
         csv_list.append(record)    
-               
-    list_to_csv(csv_list, output_file)     
+    errors = []
+    if 'Status' in columns:
+        i = columns.index('Status')
+        for c in csv_list[1:]:
+            if "Well-Formed" not in c[i]:
+                errors.append(c)
+    log = "Total files checked: %d Error files: %d" %(len(csv_list[1:]), len(errors[1:]))
+    csv_list = [[log]] + csv_list             
+    list_to_csv(errors, "errors_"+output_file)   
+    list_to_csv(csv_list, output_file) 
+    print(log)
     return csv_list
+
+
             
 ### example to convert jhove output file to csv, csv delimiter is ^
     
 jhove_to_csv("output1.txt","output1.csv" ,["RepresentationInformation", "Format", "Status"])
+
+
